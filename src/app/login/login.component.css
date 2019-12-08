@@ -1,0 +1,29 @@
+.portal{
+    position: absolute;
+    width: 400px;
+    height: 300px;
+    z-index: 15;
+    top: 50%;
+    left: 50%;
+    margin: -100px 0 0 -190px;
+}
+
+h3{
+    color: gray;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    
+}
+h2{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    
+    color: black;
+}
+form{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+
+}
+em{
+    color: red;
+    float: right;;
+    padding-left: 10pxs;
+    }
