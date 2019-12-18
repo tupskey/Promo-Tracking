@@ -1,0 +1,28 @@
+
+
+<h1>
+    Edit Candidate
+</h1>
+<h6>{{candidate.other}}</h6>
+<h6>{{candidate.email}}</h6>
+<h6>{{candidate.fac}}</h6>
+
+<form >
+    <div  *ngFor="let accessor of accessors">
+        <li>{{accessor.name}}</li>
+        <div >
+            <input type="text"  value="{{accessor.name}}" name="name" /><br><br>
+            <input type="text" value="{{accessor.email}}" name="email"/><br><br>
+            <input type="text" value="{{accessor.university}}" name="university" /><br><br>
+            <input type="text" value="{{accessor.status}}" name="status" /><br><br>
+            <input type="radio" [(ngModel)]="accessor.status" name="status" value="invitationsent" />Invitation Sent<br><br>
+            <input type="radio" [(ngModel)]="accessor.status" name="status" value="applicationrecieved" />Application received<br><br>
+            <input type="radio" [(ngModel)]="accessor.status" name="status" value="papersent" />Paper Sent<br><br>
+            <input type="radio" [(ngModel)]="accessor.status" name="status" value="paperrecieved" />Paper received<br><br>
+
+        </div>
+        
+    </div>
+    
+     <button  class="btn btn-danger" type="submit" (click)="saveUpdate()">Update</button> 
+</form>

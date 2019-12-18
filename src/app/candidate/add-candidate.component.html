@@ -2,36 +2,105 @@
 <div class="cand"> 
     <h2>Add Candidate</h2>
     <form [formGroup]="AddCandidate" (ngSubmit)="onSubmit()" novalidate>
-        <div class="form-group"> 
-            <input type="text" class="form-control" formControlName="surname" placeholder="surname">
+        <div class="row">
+                <div class="form-group col-md-4 offset-2"> 
+                        <input type="text" class="form-control"   formControlName="surname" placeholder="surname">
+                    </div>
+                    <div class="form-group col-md-4"> 
+                        <input type="text" class="form-control"   formControlName="other" placeholder="other">
+             </div>
         </div>
-        <div class="form-group"> 
-            <input type="text" class="form-control" formControlName="other" placeholder="other">
+        <div class="row">
+                <div class="form-group col-md-4 offset-2"> 
+                        <input type="email" class="form-control"  formControlName="email" placeholder="email">
+                </div>
+                <div class="form-group col-md-4"> 
+                        <input type="number" class="form-control" formControlName="number" placeholder="Phone no..">
+                 </div>
         </div>
-        <div class="form-group"> 
-            <input type="email" class="form-control" formControlName="email" placeholder="email">
+        <div class="row"> 
+                <div class="form-group col-md-4 offset-2">
+                        <select class="custom-select" (change)="changeFaculty($event.target.value)" formControlName="fac">
+                            <option [ngValue]="null" disabled>Faculty</option>
+                            <option *ngFor="let faculty of Faculty" value="{{faculty}}">{{faculty}}</option>
+                        </select>
+                </div>
+        </div> 
+        <div class="row">
+                <div class="form-group col-md-4 offset-2">
+                        <select class="custom-select" (change)="changeDepartment($event.target.value)" formControlName="dep">
+                            <option [ngValue]="null" disabled>Department</option>
+                            <option *ngFor="let department of Department" value="{{department}}">{{department}}</option>
+                        </select>
+                 </div>
+        </div>       
+                    
+        
+        <div class="row">
+                <div class="form-group col-md-4 offset-2">
+                        <select class="custom-select" (change)="changeLevel($event.target.value)" formControlName="lev">
+                            <option [ngValue]="null" disabled>Level</option>
+                            <option *ngFor="let level of Level" value="{{level}}">{{level}}</option>
+                        </select>
+                 </div>
         </div>
-        <div class="form-group">
-            <select class="custom-select" (change)="changeFaculty($event)" formControlName="fac">
-                <option [ngValue]="null" disabled>Faculty</option>
-                <option *ngFor="let faculty of Faculty" [ngValue]="faculty">{{faculty}}</option>
-            </select>
+        <div class="row">
+            <div class="form-group col-md-4 offset-2">
+                <input type="date" class="form-control input-sm"  name="date" placeholder="Required" formControlName="date">
+             </div>
+    </div>
+        <div>
+            <hr>
+        </div>      
+            <h5>Add Accessors</h5>
+                <div formArrayName="accessor" *ngFor="let access of accessor.controls; let i=index">
+                    <div  [formGroupName]="i">
+                        <div class="row">
+                                    <div class="form-group col-md-4 offset-2">
+                                        <input class="form-control" type="text" id="{{ 'accessId' + i }}" placeholder="Accessor name" formControlName="accessorname"> 
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <input class="form-control" type="email" placeholder="Email..." formControlName="accessoremail">
+                                    </div>
+                        </div>
+                        <div class="row">
+                                <div class="form-group col-md-4 offset-2">
+                                        <input class="form-control"  type="text" placeholder="University" formControlName="university">
+                                </div>
+                        </div>
+                        <div class="col-md-4 offset-2">
+                                    <div class="form-group">
+                                        <input type="radio"  class="form-check-input" value="invitationsent" formControlName="status" >Invitation sent
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="radio" class="form-check-input" value="applicationsent" formControlName="status" >Application receieved
+                                    </div>
+                                    <div class="form-group"> 
+                                        <input type="radio" class="form-check-input" value="papersent" formControlName="status" >Paper sent
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="radio" class="form-check-input" value="paperreceived"  formControlName="status" >Paper received
+                                    </div>
+                        </div>                      
+                        
+                    </div>
+                </div>    
+                <div class="row mb-5">
+                        <div class="col-md-4 offset-2">
+                                <button [hidden]="accessor.length >= 3" type="button" class="btn btn-primary" (click)="addAccessors()">Add Another Accessor </button>
+                        </div>
+                </div> 
+                    
+        
+        <div class="form-group row">
+            <div class="col-md-4 offset-2">
+                    <button id="but2" type="button" (click)="back()" class="btn btn-md ">Cancel Registration</button>
+            </div>
+           <div class="col-md-4">
+                <button id="but" type="submit" class="btn btn-md ">Save Candidate</button>
+           </div>
+            
         </div>
-        <div class="form-group">
-            <select class="custom-select" (change)="changeDepartment($event)" formControlName="dep">
-                <option [ngValue]="null" disabled>Department</option>
-                <option *ngFor="let department of Department" [ngValue]="department">{{department}}</option>
-            </select>
-        </div>
-        <div class="form-group">
-            <select class="custom-select" (change)="changeLevel($event)" formControlName="lev">
-                <option [ngValue]="null" disabled>Level</option>
-                <option *ngFor="let level of Level" [ngValue]="level">{{level}}</option>
-            </select>
-        </div>
-        <div class="form-group mb-3">
-            <button id="but" type="button" (click)="back()" class="btn btn-md mr-5">Cancel</button>
-            <button id="but" type="submit" class="btn btn-md ml-5">Save</button>
-        </div>
+        
     </form>
 </div>

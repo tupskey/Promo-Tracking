@@ -11,6 +11,8 @@ import { AuthService } from './auth.service';
 import { NavBarComponent } from './navbar.component';
 import { LoginComponent } from './login/login.component';
 import { AddCandidateComponent } from './candidate/add-candidate.component';
+import { CandidateListComponent } from './candidate/candidate-list.component';
+import { EditComponent } from './candidate/edit-candidate.component';
 
 
 
@@ -21,6 +23,8 @@ import { AddCandidateComponent } from './candidate/add-candidate.component';
     NavBarComponent,
     LoginComponent,
     AddCandidateComponent, 
+    CandidateListComponent,
+    EditComponent
   ],
   imports: [
     BrowserModule,
